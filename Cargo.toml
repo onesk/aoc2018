@@ -2,3 +2,7 @@
 name = "aoc2018"
 version = "0.1.0"
 authors = ["n_lesnikov"]
+
+[dependencies]
+regex = "1.1.0"
+itertools = "0.7.11"
