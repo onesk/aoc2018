@@ -183,15 +183,14 @@ fn part_two(points: &[Point]) {
     let wide_aabb = aabb.expand(DIST_LIMIT / points.len());
 
     let region_size = wide_aabb.domain().filter_map(|domain_p| {
-        let below_threshold = points.iter()
+        let overflown = points.iter()
             .scan(0, |state, &p| {
                 *state += p.dist(&domain_p);
                 Some(*state)
             })
-            .take_while(|&total_dist| total_dist < DIST_LIMIT as i32)
-            .count();
+            .any(|total_dist| total_dist >= DIST_LIMIT as i32);
 
-        if below_threshold == points.len() { Some(domain_p) } else { None }
+        if !overflown { Some(domain_p) } else { None }
     }).count();
 
     println!("{:?}", region_size);
