@@ -4,7 +4,6 @@ use std::collections::VecDeque;
 const N_PLAYERS: usize = 463;
 const N_MARBLES: usize = 71787;
 
-#[derive(Debug)]
 struct Circle(VecDeque<usize>);
 
 impl Circle {
@@ -34,14 +33,6 @@ impl Circle {
         evicted
     }
 }
-
-/*
-    [4]  0 16  8 17  4 18  9 19  2 20 10 21  5(22)11  1 12  6 13  3 14  7 15
-    [5]  0 16  8 17  4 18(19) 2 20 10 21  5 22 11  1 12  6 13  3 14  7 15
-
-    22 Circle([11, 1, 12, 6, 13, 3, 14, 7, 15, 0, 16, 8, 17, 4, 18, 9, 19, 2, 20, 10, 21, 5, 22])
-    23 Circle([19, 2, 20, 10, 21, 5, 22, 11, 1, 12, 6, 13, 3, 14, 7, 15, 0, 16, 8, 17, 4, 18])
-*/
 
 fn highscore(n_players: usize, last_marble: usize) -> usize {
     let mut scores = vec![0usize; n_players];
